@@ -23,3 +23,7 @@ class Block(object):
             Difficulty    : {difficulty}
             Data          : {data}
             """.format(**self.__dict__)
+
+    @classmethod
+    def genesis(cls):
+        return cls(1, 'Genesis time', '', 'Genesis hash', 0, 1, 'Genesis block')
