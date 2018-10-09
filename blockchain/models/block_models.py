@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
+import json
+
 
 class Block(object):
 
@@ -27,3 +29,18 @@ class Block(object):
     @classmethod
     def genesis(cls):
         return cls(1, 'Genesis time', '', 'Genesis hash', 0, 1, 'Genesis block')
+
+    def serialize(self):
+        return {
+            'Index': self.index,
+            'Timestamp': self.timestamp,
+            'Previous hash': self.previous_hash,
+            'Hash': self.hash,
+            'Nonce': self.nonce,
+            'Difficulty': self.difficulty,
+            'Data': self.data
+        }
+
+    @classmethod
+    def deserialize(cls, json_obj):
+        return cls(**json.loads(json_obj))
