@@ -20,3 +20,7 @@ class Hasher(object):
         }
         seed = json.dumps(params, sort_keys=True).encode()
         return sha256(seed).hexdigest()
+
+    @classmethod
+    def get_hash(cls, block):
+        return cls.hash(block.__dict__)
