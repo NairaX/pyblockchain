@@ -44,3 +44,6 @@ class Block(object):
     @classmethod
     def deserialize(cls, json_obj):
         return cls(**json.loads(json_obj))
+
+    def jsonify(self):
+        return json.dumps(self.__dict__)
